@@ -27,13 +27,15 @@ class PassportFile(TelegramObject):
     files are in JPEG format when decrypted and don't exceed 10MB.
 
     Attributes:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         file_size (:obj:`int`): File size.
         file_date (:obj:`int`): Unix time when the file was uploaded.
         bot (:class:`telegram.Bot`): Optional. The Bot to use for instance methods.
 
     Args:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         file_size (:obj:`int`): File size.
         file_date (:obj:`int`): Unix time when the file was uploaded.
         bot (:class:`telegram.Bot`, optional): The Bot to use for instance methods.
@@ -41,9 +43,10 @@ class PassportFile(TelegramObject):
 
     """
 
-    def __init__(self, file_id, file_date, file_size=None, bot=None, credentials=None, **kwargs):
+    def __init__(self, file_id, file_unique_id, file_date, file_size=None, bot=None, credentials=None, **kwargs):
         # Required
-        self.file_id = file_id
+        self.file_id = str(file_id)
+        self.file_unique_id = str(file_unique_id)
         self.file_size = file_size
         self.file_date = file_date
         # Optionals

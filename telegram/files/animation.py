@@ -25,7 +25,8 @@ class Animation(TelegramObject):
     """This object represents an animation file to be displayed in the message containing a game.
 
     Attributes:
-        file_id (:obj:`str`): Unique file identifier.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         width (:obj:`int`): Video width as defined by sender.
         height (:obj:`int`): Video height as defined by sender.
         duration (:obj:`int`): Duration of the video in seconds as defined by sender.
@@ -37,7 +38,8 @@ class Animation(TelegramObject):
         bot (:class:`telegram.Bot`): Optional. The Bot to use for instance methods.
 
     Args:
-        file_id (:obj:`str`): Unique file identifier.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         width (:obj:`int`): Video width as defined by sender.
         height (:obj:`int`): Video height as defined by sender.
         duration (:obj:`int`): Duration of the video in seconds as defined by sender.
@@ -52,6 +54,7 @@ class Animation(TelegramObject):
 
     def __init__(self,
                  file_id,
+                 file_unique_id,
                  width,
                  height,
                  duration,
@@ -63,6 +66,7 @@ class Animation(TelegramObject):
                  **kwargs):
         # Required
         self.file_id = str(file_id)
+        self.file_unique_id = str(file_unique_id)
         self.width = int(width)
         self.height = int(height)
         self.duration = duration

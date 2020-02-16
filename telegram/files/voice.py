@@ -25,14 +25,16 @@ class Voice(TelegramObject):
     """This object represents a voice note.
 
     Attributes:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         duration (:obj:`int`): Duration of the audio in seconds as defined by sender.
         mime_type (:obj:`str`): Optional. MIME type of the file as defined by sender.
         file_size (:obj:`int`): Optional. File size.
         bot (:class:`telegram.Bot`): Optional. The Bot to use for instance methods.
 
     Args:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         duration (:obj:`int`, optional): Duration of the audio in seconds as defined by sender.
         mime_type (:obj:`str`, optional): MIME type of the file as defined by sender.
         file_size (:obj:`int`, optional): File size.
@@ -41,9 +43,10 @@ class Voice(TelegramObject):
 
     """
 
-    def __init__(self, file_id, duration, mime_type=None, file_size=None, bot=None, **kwargs):
+    def __init__(self, file_id, file_unique_id, duration, mime_type=None, file_size=None, bot=None, **kwargs):
         # Required
         self.file_id = str(file_id)
+        self.file_unique_id = str(file_unique_id)
         self.duration = int(duration)
         # Optionals
         self.mime_type = mime_type

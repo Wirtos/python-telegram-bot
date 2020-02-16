@@ -25,7 +25,8 @@ class VideoNote(TelegramObject):
     """This object represents a video message (available in Telegram apps as of v.4.0).
 
     Attributes:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         length (:obj:`int`): Video width and height as defined by sender.
         duration (:obj:`int`): Duration of the video in seconds as defined by sender.
         thumb (:class:`telegram.PhotoSize`): Optional. Video thumbnail.
@@ -33,7 +34,8 @@ class VideoNote(TelegramObject):
         bot (:class:`telegram.Bot`): Optional. The Bot to use for instance methods.
 
     Args:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         length (:obj:`int`): Video width and height as defined by sender.
         duration (:obj:`int`): Duration of the video in seconds as defined by sender.
         thumb (:class:`telegram.PhotoSize`, optional): Video thumbnail.
@@ -43,9 +45,10 @@ class VideoNote(TelegramObject):
 
     """
 
-    def __init__(self, file_id, length, duration, thumb=None, file_size=None, bot=None, **kwargs):
+    def __init__(self, file_id, file_unique_id, length, duration, thumb=None, file_size=None, bot=None, **kwargs):
         # Required
         self.file_id = str(file_id)
+        self.file_unique_id = str(file_unique_id)
         self.length = int(length)
         self.duration = int(duration)
         # Optionals

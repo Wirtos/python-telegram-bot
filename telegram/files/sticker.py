@@ -25,7 +25,8 @@ class Sticker(TelegramObject):
     """This object represents a sticker.
 
     Attributes:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         width (:obj:`int`): Sticker width.
         height (:obj:`int`): Sticker height.
         is_animated (:obj:`bool`): True, if the sticker is animated.
@@ -39,7 +40,8 @@ class Sticker(TelegramObject):
         bot (:class:`telegram.Bot`): Optional. The Bot to use for instance methods.
 
     Args:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         width (:obj:`int`): Sticker width.
         height (:obj:`int`): Sticker height.
         is_animated (:obj:`bool`): True, if the sticker is animated.
@@ -58,6 +60,7 @@ class Sticker(TelegramObject):
 
     def __init__(self,
                  file_id,
+                 file_unique_id,
                  width,
                  height,
                  is_animated,
@@ -70,6 +73,7 @@ class Sticker(TelegramObject):
                  **kwargs):
         # Required
         self.file_id = str(file_id)
+        self.file_unique_id = str(file_unique_id)
         self.width = int(width)
         self.height = int(height)
         self.is_animated = is_animated

@@ -25,14 +25,16 @@ class PhotoSize(TelegramObject):
     """This object represents one size of a photo or a file/sticker thumbnail.
 
     Attributes:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         width (:obj:`int`): Photo width.
         height (:obj:`int`): Photo height.
         file_size (:obj:`int`): Optional. File size.
         bot (:class:`telegram.Bot`): Optional. The Bot to use for instance methods.
 
     Args:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         width (:obj:`int`): Photo width.
         height (:obj:`int`): Photo height.
         file_size (:obj:`int`, optional): File size.
@@ -41,9 +43,10 @@ class PhotoSize(TelegramObject):
 
     """
 
-    def __init__(self, file_id, width, height, file_size=None, bot=None, **kwargs):
+    def __init__(self, file_id, file_unique_id, width, height, file_size=None, bot=None, **kwargs):
         # Required
         self.file_id = str(file_id)
+        self.file_unique_id = str(file_unique_id)
         self.width = int(width)
         self.height = int(height)
         # Optionals

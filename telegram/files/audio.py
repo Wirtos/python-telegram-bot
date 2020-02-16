@@ -25,7 +25,8 @@ class Audio(TelegramObject):
     """This object represents an audio file to be treated as music by the Telegram clients.
 
     Attributes:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         duration (:obj:`int`): Duration of the audio in seconds.
         performer (:obj:`str`): Optional. Performer of the audio as defined by sender or by audio
             tags.
@@ -37,7 +38,8 @@ class Audio(TelegramObject):
         bot (:class:`telegram.Bot`): Optional. The Bot to use for instance methods.
 
     Args:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         duration (:obj:`int`): Duration of the audio in seconds as defined by sender.
         performer (:obj:`str`, optional): Performer of the audio as defined by sender or by audio
             tags.
@@ -53,6 +55,7 @@ class Audio(TelegramObject):
 
     def __init__(self,
                  file_id,
+                 file_unique_id,
                  duration,
                  performer=None,
                  title=None,
@@ -63,6 +66,7 @@ class Audio(TelegramObject):
                  **kwargs):
         # Required
         self.file_id = str(file_id)
+        self.file_unique_id = str(file_unique_id)
         self.duration = int(duration)
         # Optionals
         self.performer = performer

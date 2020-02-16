@@ -19,7 +19,6 @@
 """This module contains an object that represents a Telegram File."""
 from base64 import b64decode
 from os.path import basename
-import os
 
 from future.backports.urllib import parse as urllib_parse
 
@@ -37,12 +36,14 @@ class File(TelegramObject):
         Maximum file size to download is 20 MB
 
     Attributes:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         file_size (:obj:`str`): Optional. File size.
         file_path (:obj:`str`): Optional. File path. Use :attr:`download` to get the file.
 
     Args:
-        file_id (:obj:`str`): Unique identifier for this file.
+        file_id (:obj:`str`): Access identifier for this file.
+        file_unique_id (:obj:`str`): Unique identifier for this file.
         file_size (:obj:`int`, optional): Optional. File size, if known.
         file_path (:obj:`str`, optional): File path. Use :attr:`download` to get the file.
         bot (:obj:`telegram.Bot`, optional): Bot to use with shortcut method.
@@ -54,9 +55,10 @@ class File(TelegramObject):
 
     """
 
-    def __init__(self, file_id, bot=None, file_size=None, file_path=None, **kwargs):
+    def __init__(self, file_id, file_unique_id, bot=None, file_size=None, file_path=None, **kwargs):
         # Required
         self.file_id = str(file_id)
+        self.file_unique_id = str(file_unique_id)
 
         # Optionals
         self.file_size = file_size
